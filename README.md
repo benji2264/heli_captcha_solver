@@ -64,10 +64,10 @@ Here are a few things I tried to improve performance or reduce overfitting but n
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 - EfficientNet and Transfer Learning
  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this last section, I tried to combine the best of both worlds: the high performances of pre-trained networks and the robustness of adversarial training. 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this last section on image classification, let's try to combine the best of both worlds: the high performances of pre-trained networks and the robustness of adversarial training. 
 I chose here a state-of-the-art model for image classification, **EfficientNetB0**, pre-trained on ImageNet (to learn a few lower level features), and I fine-tuned on our own dataset. This is the idea of **transfer learning**. 
-The implementation in Keras is, again, very straightforward. But this turned out to be a failure, the features in the ImageNet dataset and in our own dataset are apparently too different (maybe because of the adversarial examples) :
-<img src="https://github.com/benji2264/heli_captcha_solver/blob/main/image_classification/training_efficientnetb0.png" alt="drawing" width="700"/>
+The implementation in Keras is, again, very straightforward. And, after only 15 epochs, EfficientNet achieves **83%** accuracy on the dev set (therefore beating the ResNet by almost 7%)  :
+<img src="https://github.com/benji2264/heli_captcha_solver/blob/main/image_classification/training_efficientnet_.png" alt="drawing" width="700"/>
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 - Problems and limitations of the "image classification" approach
 
@@ -77,7 +77,7 @@ The main issue is that the network can only predict one class per image, which i
 <img src="https://github.com/benji2264/heli_captcha_solver/blob/main/image_classification/multiple_class_preds.jpeg" alt="drawing" width="1150"/>
  
 Here a human operator would have clicked on the middle image whether the challenge was to recognize cars, crosswalks or traffic lights.
-But Heli would only have clicked if the challenge was to recognize crosswalks (Top 1 prediction).
+But Heli would only have clicked if the challenge was to recognize crosswalks (Top 1 prediction of ResNet50).
 One way to partially address this issue is to allow Heli to click on the image if it is confident enough (probability above a certain threshold, e.g. 40%).
 This way, if the network output for a given image is Bridge (45%), Crosswalk (55%), Heli would click on that image in both cases.
 Unfortunately, this causes more problems than it solves, especially since the network sometimes has trouble telling cars and buses apart.
