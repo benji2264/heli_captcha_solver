@@ -67,6 +67,7 @@ Here are a few things I tried to improve performance or reduce overfitting but n
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;In this last section on image classification, let's try to combine the best of both worlds: the high performances of pre-trained networks and the robustness of adversarial training. 
 I chose here a state-of-the-art model for image classification, **EfficientNetB0**, pre-trained on ImageNet (to learn a few lower level features), and I fine-tuned on our own dataset. This is the idea of **transfer learning**. 
 The implementation in Keras is, again, very straightforward. And, after only 15 epochs, EfficientNet achieves **83%** accuracy on the dev set (therefore beating the ResNet by almost 7%)  :
+
 <img src="https://github.com/benji2264/heli_captcha_solver/blob/main/image_classification/training_efficientnet_.png" alt="drawing" width="700"/>
 
 ### &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4 - Problems and limitations of the "image classification" approach
