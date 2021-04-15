@@ -1,4 +1,4 @@
-# Meet Heli, the fully automated captcha breaker
+# Meet Heli, the fully automated captcha solver 
 
 ![alt text](https://github.com/benji2264/heliade/blob/main/heli_demo.gif "Heli Demo")
  
